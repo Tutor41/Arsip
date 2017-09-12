@@ -1,6 +1,4 @@
-<script type='text/javascript'>
-//<![CDATA[
-;(function ($) {
+(function ($) {
 
   //FlexSlider: Object Instance
   $.flexslider = function(el, options) {
@@ -893,6 +891,3 @@
   }
 
 })(jQuery);
-
-//]]>
-</script>
