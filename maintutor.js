@@ -9,7 +9,36 @@ $(document).ready(function () {
 	$(".comments-tabs.simpleTab .tab-wrapper").wrap("<div class='comments-tabs-header'/>");
 	$('.comments-tabs-header').prepend('<h3>' + comments_text + '</h3>')
 });
+$("#LinkList94").each(function () {
+	var k = "<ul id='menu-main-nav'><li><ul class='sub-menu'>";
+	$("#LinkList94 li").each(function () {
+		var a = $(this).text(),
+		o = a.substr(0, 1),
+		p = a.substr(1);
+		"_" == o ? (o = $(this).find("a").attr("href"), k += '<li><a href="' + o + '">' + p + "</a></li>") : (o = $(this).find("a").attr("href"), k += '</ul></li><li><a href="' + o + '">' + a + "</a><ul class='sub-menu'>")
+	});
+	k += "</ul></li></ul>";
+	$(this).html(k);
+	$("#LinkList94 ul").each(function () {
+		var k = $(this);
+		if (k.html().replace(/\s|&nbsp;/g, "").length == 0) k.remove()
+	});
+	$("#LinkList94 li").each(function () {
+		var k = $(this);
+		if (k.html().replace(/\s|&nbsp;/g, "").length == 0) k.remove()
+	})
+});
 $(document).ready(function () {
+	$("#menu").show();
+	$("ul.sub-menu").parent("li").addClass("has-children");
+	$("#menu ul li").each(function () {
+		$(this).hoverTimeout(0, function () {
+			$(this).children("ul").slideDown()
+		},
+		0, function () {
+			$(this).children("ul").hide()
+		})
+	});
 	var search = $('.search');
 	search.click(function (e) {
 		e.preventDefault();
