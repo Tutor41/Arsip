@@ -10,6 +10,31 @@ $(document).ready(function () {
 	$('.comments-tabs-header').prepend('<h3>' + comments_text + '</h3>')
 });
 $(document).ready(function () {
+	$("#menu").show();
+	$("ul.sub-menu").parent("li").addClass("has-children");
+	$("#menu ul li").each(function () {
+		$(this).hoverTimeout(0, function () {
+			$(this).children("ul").slideDown()
+		},
+		0, function () {
+			$(this).children("ul").hide()
+		})
+	});
+	var search = $('.search');
+	search.click(function (e) {
+		e.preventDefault();
+		if (search.is('.active') && $(e.target).is(search)) {
+			search.removeClass('active')
+		} else {
+			search.addClass('active');
+			search.find('input').focus()
+		}
+	});
+	$('body').click(function (e) {
+		if (search.is('.active') && !$(e.target).is('.search, .search form, .search input')) {
+			search.removeClass('active')
+		}
+	});
 	$(".index .post-outer,.archive .post-outer").each(function () {
 		$(this).find(".block-image .thumb a").attr("style", function (a, b) {
 			return b.replace("/default.jpg", "/mqdefault.jpg")
