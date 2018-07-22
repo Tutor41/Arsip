@@ -123,7 +123,7 @@ $(".ticker .HTML .widget-content").each(function () {
 	box = $(this).find("span").attr("data-type");
 	if (box.match('recent')) {
 		$.ajax({
-			url: "/feeds/posts/TipTrikTutorial?alt=json-in-script&max-results=" + b,
+			url: "/feeds/posts/default/-/TipTrikTutorial?orderby=updated&alt=json-in-script&max-results=" + b,
 			type: 'get',
 			dataType: "jsonp",
 			success: function (e) {
@@ -161,7 +161,7 @@ $(".ticker .HTML .widget-content").each(function () {
 		})
 	} else if (box.match('label')) {
 		$.ajax({
-			url: "/feeds/posts/TipTrikTutorial/-/" + v + "?alt=json-in-script&max-results=" + b,
+			url: "/feeds/posts/default/-/TipTrikTutorial" + v + "?alt=json-in-script&max-results=" + b,
 			type: 'get',
 			dataType: "jsonp",
 			success: function (e) {
